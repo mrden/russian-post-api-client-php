@@ -9,7 +9,7 @@ class Client
 {
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
-    const METHOD_POST = 'PUT';
+    const METHOD_PUT = 'PUT';
     const METHOD_DELETE = 'DELETE';
 
     protected $url = 'https://otpravka-api.pochta.ru/1.0/';
