@@ -8,7 +8,7 @@ class ApiClient
 {
     protected $client;
 
-    public function __construct($accessToken, $login, $passwordy)
+    public function __construct($accessToken, $login, $password)
     {
         $this->client = new Client($accessToken, $login, $password);
     }
