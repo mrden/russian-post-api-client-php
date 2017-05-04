@@ -4,7 +4,7 @@
     "type": "library",
     "keywords": ["API", "Russian Post", "REST"],
     "homepage": "https://otpravka.pochta.ru/",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
         "email": "mamontov@bringer.pro"
     },
     "autoload": {
-        "psr-0": { "AlemTaT\\": "lib/" }
+        "psr-0": { "RussianPost\\": "lib/" }
     },
     "extra": {
         "branch-alias": {
