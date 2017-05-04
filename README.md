@@ -1,4 +1,4 @@
-# AlemTAT API PHP client
+# RussianPost API PHP client
 
 PHP-client for [RussianPost API](https://otpravka.pochta.ru/).
 
