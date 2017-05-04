@@ -35,9 +35,11 @@ class Client
             $headers[] = 'Content-Type: application/json';
         }
 
+        $headers[] = sprintf('Authorization: AccessToken %s', $this->accessToken);
+        $headers[] = sprintf('X-User-Authorization: Basic %s', base64_encode(sprintf('%s:%s', $this->login, $this->password)));
+
         $curlHandler = curl_init();
         curl_setopt($curlHandler, CURLOPT_USERAGENT, 'RussianPost-API-client/1.0');
-        curl_setopt($curlHandler, CURLOPT_USERPWD, sprintf('%s:%s', $this->login, $this->password));
         curl_setopt($curlHandler, CURLOPT_URL, $url);
         curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlHandler, CURLOPT_FAILONERROR, false);
