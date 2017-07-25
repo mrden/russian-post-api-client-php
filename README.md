@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/bringer/russian-post-api-client-php/v/stable)](https://packagist.org/packages/bringer/russian-post-api-client-php)
+[![Total Downloads](https://poser.pugx.org/bringer/russian-post-api-client-php/downloads)](https://packagist.org/packages/bringer/russian-post-api-client-php)
+[![License](https://poser.pugx.org/bringer/russian-post-api-client-php/license)](https://packagist.org/packages/bringer/russian-post-api-client-php)
+
 # RussianPost API PHP client
 
 PHP-client for [RussianPost API](https://otpravka.pochta.ru/).
