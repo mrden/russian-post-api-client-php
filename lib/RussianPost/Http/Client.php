@@ -33,6 +33,7 @@ class Client
 
         if (in_array($method, array(self::METHOD_POST, self::METHOD_PUT, self::METHOD_DELETE))) {
             $headers[] = 'Content-Type: application/json';
+            $headers[] = 'Accept: application/json;charset=UTF-8';
         }
 
         $headers[] = sprintf('Authorization: AccessToken %s', $this->accessToken);
@@ -56,10 +57,11 @@ class Client
         if ($method == self::METHOD_POST) {
             curl_setopt($curlHandler, CURLOPT_POST, true);
         } elseif (in_array($method, array(self::METHOD_PUT, self::METHOD_DELETE))) {
+            curl_setopt($curlHandler, CURLOPT_POST, false);
             curl_setopt($curlHandler, CURLOPT_CUSTOMREQUEST, $method);
         }
 
-        if (count($parameters) > 0 && in_array($method, array(self::METHOD_POST, self::METHOD_PUT, self::METHOD_DELETE))) {
+        if ((count($parameters) > 0 || is_string($parameters)) && in_array($method, array(self::METHOD_POST, self::METHOD_PUT, self::METHOD_DELETE))) {
             curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $parameters);
         }
 
@@ -89,10 +91,9 @@ class Client
             throw new CurlException($error, $statusCode);
         }
 
-        if (stripos($contentType, 'pdf') !== false) {
+        if (stripos($contentType, 'pdf') !== false || stripos($contentType, 'zip') !== false) {
             return $responseBody;
         }
-
 
         return new ApiResponse($statusCode, $responseBody);
     }

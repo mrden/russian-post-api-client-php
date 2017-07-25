@@ -93,7 +93,7 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest('user/shipment', Client::METHOD_POST, json_encode($orderIds));
+        return $this->client->makeRequest('user/shipment' . (!is_null($sendingDate) ? $sendingDate->format('Y-m-d') : ''), Client::METHOD_POST, json_encode($orderIds));
     }
 
     public function changeShipmentDate($name, \DateTime $date)
@@ -300,7 +300,7 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest(sprintf('batch/{name}/checkin?sendEmail=%s', $name, $sendEmail ? 'true' : 'false'), Client::METHOD_POST);
+        return $this->client->makeRequest(sprintf('batch/%s/checkin?%s', $name, http_build_query(['sendEmail' => $sendEmail ? 'true' : 'false'])), Client::METHOD_POST);
     }
 
     public function getShippingPoints()
