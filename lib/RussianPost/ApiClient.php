@@ -71,7 +71,7 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest('backlog/', Client::METHOD_DELETE, json_encode($orderIds));
+        return $this->client->makeRequest('backlog', Client::METHOD_DELETE, json_encode($orderIds));
     }
 
     public function moveOrder($orderIds)
