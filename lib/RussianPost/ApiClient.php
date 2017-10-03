@@ -32,7 +32,7 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest('user/backlog', Client::METHOD_GET, array('query' => $query));
+        return $this->client->makeRequest('backlog/search', Client::METHOD_GET, array('query' => $query));
     }
 
     public function getOrder($id)
@@ -204,7 +204,7 @@ class ApiClient
         return $this->client->makeRequest(sprintf('batch/%s/shipment', $name), Client::METHOD_GET, $parameters);
     }
 
-    public function searchBatch($mailType = null, $size = null, $sort = null, $page = null)
+    public function searchBatches($mailType = null, $size = null, $sort = null, $page = null)
     {
         $parameters = array();
         if (!is_null($mailType)) {
@@ -234,7 +234,7 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest(sprintf('batch/shipment/%s', $id), Client::METHOD_GET);
+        return $this->client->makeRequest(sprintf('shipment/%s', $id), Client::METHOD_GET);
     }
 
     public function getForms($name)
