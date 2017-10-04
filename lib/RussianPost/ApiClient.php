@@ -98,7 +98,7 @@ class ApiClient
 
     public function changeShipmentDate($name, \DateTime $date)
     {
-         if (is_null($name) || empty($name)) {
+        if (is_null($name) || empty($name)) {
             throw new \InvalidArgumentException(
                 'Parameter `name` must contains a data'
             );
