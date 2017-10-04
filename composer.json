@@ -4,12 +4,16 @@
     "type": "library",
     "keywords": ["API", "Russian Post", "REST"],
     "homepage": "https://otpravka.pochta.ru/",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Mamontov",
             "email": "mamontov@bringer.pro"
+        },
+        {
+          "name": "Denis Kiselev",
+          "email": "kiselevden911@yandex.ru"
         }
     ],
     "require": {
