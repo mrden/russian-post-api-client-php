@@ -129,8 +129,16 @@ class ApiClient
             );
         }
 
+        $params = '';
+
+        if ($sendingDate instanceof \DateTime) {
+            $params = http_build_query(array(
+                'sending-date' => $sendingDate->format('Y-m-d')
+            ));
+        }
+
         return $this->client->makeRequest(
-            'user/shipment' .  (($sendingDate instanceof \DateTime) ? $sendingDate->format('Y-m-d') : ''),
+            sprintf('user/shipment%s' . $params),
             Client::METHOD_POST,
             json_encode($orderIds)
         );
@@ -177,7 +185,8 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest(sprintf('batch/%s/shipment', $name), Client::METHOD_POST, json_encode($orderIds));
+        return $this->client->makeRequest(sprintf('batch/%s/shipment', $name), Client::METHOD_POST,
+            json_encode($orderIds));
     }
 
     /**
@@ -412,7 +421,8 @@ class ApiClient
         }
 
         return $this->client->makeRequest(
-            sprintf('batch/%s/checkin?%s', $name, http_build_query(array('sendEmail' => $sendEmail ? 'true' : 'false'))),
+            sprintf('batch/%s/checkin?%s', $name,
+                http_build_query(array('sendEmail' => $sendEmail ? 'true' : 'false'))),
             Client::METHOD_POST
         );
     }
