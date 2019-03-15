@@ -5,6 +5,10 @@ namespace RussianPost\Http;
 use RussianPost\Exception\CurlException;
 use RussianPost\Response\ApiResponse;
 
+/**
+ * Class Client
+ * @package RussianPost\Http
+ */
 class Client
 {
     const METHOD_GET = 'GET';
@@ -17,6 +21,12 @@ class Client
     protected $login;
     protected $password;
 
+    /**
+     * Client constructor.
+     * @param $accessToken
+     * @param $login
+     * @param $password
+     */
     public function __construct($accessToken, $login, $password)
     {
         $this->accessToken = $accessToken;
@@ -24,6 +34,14 @@ class Client
         $this->password = $password;
     }
 
+    /**
+     * @param $path
+     * @param string $method
+     * @param array $parameters
+     * @param array $headers
+     * @param int $timeout
+     * @return bool|ApiResponse|string
+     */
     public function makeRequest($path, $method = 'GET', $parameters = array(), $headers = array(), $timeout = 30) {
         $url = $this->url . $path;
 
