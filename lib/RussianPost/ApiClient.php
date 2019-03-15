@@ -129,8 +129,6 @@ class ApiClient
             );
         }
 
-        $params = '';
-
         if ($sendingDate instanceof \DateTime) {
             $params = http_build_query(array(
                 'sending-date' => $sendingDate->format('Y-m-d')
@@ -138,7 +136,7 @@ class ApiClient
         }
 
         return $this->client->makeRequest(
-            sprintf('user/shipment%s', $params),
+            sprintf('user/shipment%s', (isset($params) ? "?$params" : '')),
             Client::METHOD_POST,
             json_encode($orderIds)
         );
