@@ -19,7 +19,7 @@ Use [API documentation](https://otpravka.pochta.ru/specification#/main)
 
 2) Run into your project directory:
 ```bash
-composer require bringer/russian-post-api-client-php ~1.0.8
+composer require bringer/russian-post-api-client-php ~1.0.9
 ```
 
 If you have not used `composer` before, include autoloader into your project.
