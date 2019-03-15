@@ -138,7 +138,7 @@ class ApiClient
         }
 
         return $this->client->makeRequest(
-            sprintf('user/shipment%s' . $params),
+            sprintf('user/shipment%s', $params),
             Client::METHOD_POST,
             json_encode($orderIds)
         );
