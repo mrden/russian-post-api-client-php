@@ -85,6 +85,11 @@ class ApiClient
         return $this->client->makeRequest('user/backlog', Client::METHOD_POST, json_encode($orderIds));
     }
 
+    /**
+     * @param $orderIds
+     * @param null|\DateTime $sendingDate
+     * @return bool|Response\ApiResponse|string
+     */
     public function createShipment($orderIds, $sendingDate = null)
     {
         if (is_null($orderIds) || !is_array($orderIds)) {
@@ -93,7 +98,11 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest('user/shipment' . (!is_null($sendingDate) ? $sendingDate->format('Y-m-d') : ''), Client::METHOD_POST, json_encode($orderIds));
+        return $this->client->makeRequest(
+            'user/shipment' .  (($sendingDate instanceof \DateTime) ? $sendingDate->format('Y-m-d') : ''),
+            Client::METHOD_POST,
+            json_encode($orderIds)
+        );
     }
 
     public function changeShipmentDate($name, \DateTime $date)
@@ -300,7 +309,10 @@ class ApiClient
             );
         }
 
-        return $this->client->makeRequest(sprintf('batch/%s/checkin?%s', $name, http_build_query(['sendEmail' => $sendEmail ? 'true' : 'false'])), Client::METHOD_POST);
+        return $this->client->makeRequest(
+            sprintf('batch/%s/checkin?%s', $name, http_build_query(array('sendEmail' => $sendEmail ? 'true' : 'false'))),
+            Client::METHOD_POST
+        );
     }
 
     public function getShippingPoints()
